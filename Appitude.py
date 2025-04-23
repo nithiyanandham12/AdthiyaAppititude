@@ -129,8 +129,15 @@ for i, q in enumerate(questions):
     st.write(f"**Question {i + 1}:**")
     st.write(f"**English:** {q['question_en']}")
     st.write(f"**Hindi:** {q['question_hi']}")
+    
+    # Fallback for empty answer to set a default index value (0)
+    if st.session_state.answers[i] == '':
+        index = 0
+    else:
+        index = q['options'].index(st.session_state.answers[i])
+
     # Use radio button with session state to persist answers
-    st.session_state.answers[i] = st.radio(f"Select the best answer for question {i + 1}", q['options'], key=i, index=q['options'].index(st.session_state.answers[i]))
+    st.session_state.answers[i] = st.radio(f"Select the best answer for question {i + 1}", q['options'], key=i, index=index)
 
 # Submit button to evaluate the test
 if st.button("Submit Test / परीक्षा सबमिट करें"):
