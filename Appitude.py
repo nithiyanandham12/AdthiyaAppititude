@@ -12,7 +12,7 @@ Answer the following 10 questions to complete the test. Choose the best answer f
 निम्नलिखित 10 सवालों के उत्तर दें और परीक्षा पूरी करें। प्रत्येक सवाल का सबसे अच्छा उत्तर चुनें।
 """)
 
-# Show a loading spinner with message
+# Show a loading spinner with message (IBM Granite subtle marketing)
 with st.spinner("IBM Granite: Preparing Questions... / आईबीएम ग्रेनाइट: प्रश्न तैयार कर रहे हैं..."):
     time.sleep(3)  # Simulate loading for 3 seconds
 
@@ -120,7 +120,7 @@ questions = [
     }
 ]
 
-# Initialize session state to store answers
+# Initialize session state to store answers (fixing reloading issue)
 if 'answers' not in st.session_state:
     st.session_state.answers = [''] * len(questions)
 
@@ -129,7 +129,7 @@ for i, q in enumerate(questions):
     st.write(f"**Question {i + 1}:**")
     st.write(f"**English:** {q['question_en']}")
     st.write(f"**Hindi:** {q['question_hi']}")
-    
+
     # Fallback for empty answer to set a default index value (0)
     if st.session_state.answers[i] == '':
         index = 0
@@ -156,3 +156,10 @@ if st.button("Submit Test / परीक्षा सबमिट करें")
         st.warning("You have some gaps in knowledge. Please review and try again. / आपके ज्ञान में कुछ अंतराल हैं। कृपया पुनः प्रयास करें।")
     else:
         st.error("Unfortunately, you did not pass the test. Please review the training and try again. / दुर्भाग्यवश, आपने परीक्षा पास नहीं की। कृपया ट्रेनिंग की समीक्षा करें और पुनः प्रयास करें।")
+
+# Subtle IBM Granite marketing message
+st.write("""
+---  
+This test is powered by IBM Granite for efficient skill assessments and training.
+यह परीक्षा IBM Granite द्वारा संचालित है, जो कुशल मूल्यांकन और प्रशिक्षण प्रदान करता है।
+""")
